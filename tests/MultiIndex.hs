@@ -1,15 +1,16 @@
-module MultiIndex ( tests ) where
-
-import           Distribution.TestSuite.QuickCheck
 import           Prelude.Unicode
+import           Test.Tasty
+import           Test.Tasty.QuickCheck
 
 import           Data.MultiIndex
 
+main :: IO ()
+main = defaultMain tests
 
-tests ∷ IO [Test]
-tests = return [toListTest, fromListTest]
+tests ∷ TestTree
+tests = testGroup "MultiIndex" [toListTest, fromListTest]
 
-toListTest ∷ Test
+toListTest ∷ TestTree
 toListTest =
     testGroup "toList"
               [ testProperty "" (toList Nil ≡ ([] ∷ [Int]))
@@ -21,7 +22,7 @@ toListTest =
               ]
 
 
-fromListTest ∷ Test
+fromListTest ∷ TestTree
 fromListTest =
     testGroup "fromList"
               [ testProperty "" (fromList ([] ∷ [Int]) ≡ Just Nil) ]

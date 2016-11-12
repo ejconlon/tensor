@@ -1,5 +1,5 @@
 Name:           tensor
-Version:        0.4.0.0
+Version:        0.4.0.1
 Cabal-Version:  >= 1.10
 License:        BSD3
 License-File:   LICENSE
@@ -33,12 +33,12 @@ Source-Repository this
 Library
   Default-Language:    Haskell2010
   Default-Extensions:  UnicodeSyntax
-  Build-Depends:       base                  ==4.8.*,
-                       base-unicode-symbols  ==0.2.*,
-                       deepseq               ==1.4.*,
-                       random                >=1.0 && < 1.2,
-                       singletons            ==1.1.*,
-                       vector                ==0.10.*
+  Build-Depends:       base >= 4.7 && < 5
+                     , base-unicode-symbols
+                     , deepseq
+                     , random
+                     , singletons
+                     , vector
   GHC-Options:         -Wall
   Exposed-Modules:     Data.Indexable
                        Data.MultiIndex
@@ -48,29 +48,29 @@ Library
   Hs-Source-Dirs:      src
 
 Test-Suite test-multiindex
-  Type:                detailed-0.9
+  type:                exitcode-stdio-1.0
   Default-Language:    Haskell2010
   Default-Extensions:  UnicodeSyntax
-  Test-Module:         MultiIndex
-  Build-Depends:       base                  == 4.8.*,
-                       base-unicode-symbols  == 0.2.*,
-                       Cabal                 >= 1.10,
-                       cabal-test-quickcheck == 0.1.*,
-                       tensor                == 0.4.*
+  Main-Is:             MultiIndex.hs
+  Build-Depends:       base
+                     , tensor               
+                     , base-unicode-symbols
+                     , tasty
+                     , tasty-quickcheck  
   GHC-Options:         -Wall
   Hs-Source-Dirs:      tests
 
 
 Test-Suite test-tensor
-  Type:                detailed-0.9
+  type:                exitcode-stdio-1.0
   Default-Language:    Haskell2010
   Default-Extensions:  UnicodeSyntax
-  Test-Module:         Tensor
-  Build-Depends:       base                  == 4.8.*,
-                       base-unicode-symbols  == 0.2.*,
-                       Cabal                 >= 1.10,
-                       cabal-test-quickcheck == 0.1.*,
-                       QuickCheck            == 2.8.*,
-                       tensor                == 0.4.*
+  Main-Is:             Tensor.hs
+  Build-Depends:       base
+                     , tensor
+                     , base-unicode-symbols
+                     , QuickCheck
+                     , tasty
+                     , tasty-quickcheck 
   GHC-Options:         -Wall
   Hs-Source-Dirs:      tests
